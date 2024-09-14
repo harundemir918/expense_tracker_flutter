@@ -1,5 +1,6 @@
 import 'package:expense_tracker/features/home/presentation/widgets/home_outcome.dart';
 import 'package:expense_tracker/features/home/presentation/widgets/home_top_section.dart';
+import 'package:expense_tracker/features/home/presentation/widgets/home_transaction_list.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,15 +8,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
+          child: Container(
+            height: MediaQuery.sizeOf(context).height,
+            padding: const EdgeInsets.all(16.0),
+            child: const Column(
               children: [
                 HomeTopSection(),
                 HomeOutcome(),
+                Expanded(child: HomeTransactionList()),
               ],
             ),
           ),

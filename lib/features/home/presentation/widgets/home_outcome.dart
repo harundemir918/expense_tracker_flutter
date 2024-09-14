@@ -13,6 +13,7 @@ class HomeOutcome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      height: MediaQuery.sizeOf(context).height * 0.35,
       margin: const EdgeInsets.symmetric(
         vertical: 24.0,
       ),
@@ -22,7 +23,7 @@ class HomeOutcome extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: AppColors.darkPurpleColor,
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(32.0),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

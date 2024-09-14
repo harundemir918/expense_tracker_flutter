@@ -11,7 +11,7 @@ class HomeSearchButton extends StatelessWidget {
       style: TextButton.styleFrom(
         side: BorderSide(
           width: 1,
-          color: AppColors.blackColor,
+          color: AppColors.greyColor,
         ),
         shape: const CircleBorder(),
       ),
