@@ -1,3 +1,4 @@
+import 'package:expense_tracker/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeOutcomeTitle extends StatelessWidget {
@@ -10,7 +11,7 @@ class HomeOutcomeTitle extends StatelessWidget {
     return Text(
       'Outcome',
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: Colors.white,
+            color: AppColors.whiteColor,
           ),
     );
   }

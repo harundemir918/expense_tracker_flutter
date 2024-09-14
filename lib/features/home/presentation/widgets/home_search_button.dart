@@ -1,3 +1,4 @@
+import 'package:expense_tracker/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeSearchButton extends StatelessWidget {
@@ -8,9 +9,9 @@ class HomeSearchButton extends StatelessWidget {
     return TextButton(
       onPressed: () {},
       style: TextButton.styleFrom(
-        side: const BorderSide(
+        side: BorderSide(
           width: 1,
-          color: Colors.black12,
+          color: AppColors.blackColor,
         ),
         shape: const CircleBorder(),
       ),
