@@ -24,11 +24,11 @@ class HomeOutcome extends StatelessWidget {
         color: AppColors.darkPurpleColor,
         borderRadius: BorderRadius.circular(8.0),
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HomeOutcomeTitle(),
-          HomeOutcomeTotal(),
+          const HomeOutcomeTitle(),
+          const HomeOutcomeTotal(),
           HomeOutcomeChart(),
         ],
       ),
