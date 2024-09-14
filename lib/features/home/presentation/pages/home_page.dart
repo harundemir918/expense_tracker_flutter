@@ -1,3 +1,4 @@
+import 'package:expense_tracker/features/home/presentation/widgets/home_outcome.dart';
 import 'package:expense_tracker/features/home/presentation/widgets/home_top_section.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
                 HomeTopSection(),
+                HomeOutcome(),
               ],
             ),
           ),
