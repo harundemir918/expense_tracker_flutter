@@ -1,3 +1,4 @@
+import 'package:expense_tracker/features/home/presentation/widgets/home_top_section.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,8 +7,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('Home'),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                HomeTopSection(),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
