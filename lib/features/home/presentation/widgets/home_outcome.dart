@@ -22,7 +22,7 @@ class HomeOutcome extends StatelessWidget {
         vertical: 24.0,
       ),
       decoration: BoxDecoration(
-        color: AppColors.darkPurpleColor,
+        color: AppColors.darkPurpleColor1,
         borderRadius: BorderRadius.circular(32.0),
       ),
       child: Column(
