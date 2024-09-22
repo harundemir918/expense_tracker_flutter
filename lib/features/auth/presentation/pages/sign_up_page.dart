@@ -1,19 +1,19 @@
 import 'package:expense_tracker/core/common/widgets/app_button.dart';
 import 'package:expense_tracker/core/common/widgets/app_logo.dart';
 import 'package:expense_tracker/core/common/widgets/app_text_form_field.dart';
+import 'package:expense_tracker/features/auth/presentation/widgets/have_account_text.dart';
 import 'package:expense_tracker/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/do_not_have_account_text.dart';
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -30,6 +30,10 @@ class _LoginPageState extends State<LoginPage> {
               const AppLogo(),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
               AppTextFormField(
+                controller: nameController,
+                hintText: 'Name',
+              ),
+              AppTextFormField(
                 controller: emailController,
                 hintText: 'Email',
               ),
@@ -38,10 +42,10 @@ class _LoginPageState extends State<LoginPage> {
                 hintText: 'Password',
               ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
-              const DoNotHaveAccountText(),
+              const HaveAccountText(),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
               AppButton(
-                text: 'Login',
+                text: 'Sign Up',
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
