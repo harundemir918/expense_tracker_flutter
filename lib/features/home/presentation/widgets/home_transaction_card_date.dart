@@ -1,3 +1,4 @@
+import 'package:expense_tracker/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeTransactionCardDate extends StatelessWidget {
@@ -10,7 +11,7 @@ class HomeTransactionCardDate extends StatelessWidget {
     return Text(
       'Today',
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Colors.black38,
+            color: AppColors.whiteColor,
           ),
     );
   }

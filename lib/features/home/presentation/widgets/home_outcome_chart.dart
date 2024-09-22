@@ -29,7 +29,7 @@ class HomeOutcomeChart extends StatelessWidget {
                       toY: data,
                       width: 30,
                       borderRadius: BorderRadius.circular(8.0),
-                      color: AppColors.lightOrangeColor,
+                      color: AppColors.lightPurpleColor3,
                     ),
                   ],
                 ),
