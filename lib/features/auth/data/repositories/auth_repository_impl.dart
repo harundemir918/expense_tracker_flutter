@@ -1,0 +1,52 @@
+import 'package:expense_tracker/core/entities/user.dart';
+import 'package:expense_tracker/core/error/failures.dart';
+import 'package:expense_tracker/features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:expense_tracker/features/auth/domain/repository/auth_repository.dart';
+import 'package:fpdart/fpdart.dart';
+
+class AuthRepositoryImpl implements AuthRepository {
+  final AuthRemoteDataSource remoteDataSource;
+
+  AuthRepositoryImpl(this.remoteDataSource);
+
+  @override
+  Future<Either<Failure, User>> currentUser() {
+    // TODO: implement currentUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, User>> loginWithEmailPassword({
+    required String email,
+    required String password,
+  }) {
+    // TODO: implement loginWithEmailPassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, User>> signUpWithEmailPassword({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    return _getUser(
+      () async => await remoteDataSource.signUpWithEmailPassword(
+        name: name,
+        email: email,
+        password: password,
+      ),
+    );
+  }
+
+  Future<Either<Failure, User>> _getUser(
+    Future<User> Function() fn,
+  ) async {
+    try {
+      final user = await fn();
+      return right(user);
+    } catch (e) {
+      return left(Failure(message: e.toString()));
+    }
+  }
+}

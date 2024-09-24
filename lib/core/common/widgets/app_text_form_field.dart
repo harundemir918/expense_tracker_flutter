@@ -27,6 +27,12 @@ class AppTextFormField extends StatelessWidget {
           hintText: hintText,
           hintStyle: TextStyle(color: AppColors.hintColor),
         ),
+        validator: (val) {
+          if (val!.isEmpty) {
+            return '$hintText is missing';
+          }
+          return null;
+        },
       ),
     );
   }

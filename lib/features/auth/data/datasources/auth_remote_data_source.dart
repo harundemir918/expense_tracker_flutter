@@ -1,0 +1,73 @@
+import 'package:expense_tracker/features/auth/data/models/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
+abstract interface class AuthRemoteDataSource {
+  Future<UserModel> signUpWithEmailPassword({
+    required String name,
+    required String email,
+    required String password,
+  });
+
+  Future<UserModel> loginWithEmailPassword({
+    required String name,
+    required String email,
+    required String password,
+  });
+
+  Future<UserModel> getCurrentUserData();
+}
+
+class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
+  final FirebaseAuth firebaseAuth;
+
+  AuthRemoteDataSourceImpl(this.firebaseAuth);
+
+  @override
+  Future<UserModel> getCurrentUserData() {
+    // TODO: implement getCurrentUserData
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UserModel> loginWithEmailPassword({
+    required String name,
+    required String email,
+    required String password,
+  }) {
+    // TODO: implement loginWithEmailPassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UserModel> signUpWithEmailPassword({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      UserCredential? userCredential =
+          await firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        throw Exception('User is null.');
+      }
+      await user.updateDisplayName(name);
+      await user.reload();
+      user = FirebaseAuth.instance.currentUser;
+      debugPrint(user.toString());
+      return UserModel(
+        id: userCredential.user!.uid,
+        email: userCredential.user!.email!,
+        name: userCredential.user!.displayName ?? '',
+      );
+    } on FirebaseAuthException catch (e) {
+      throw Exception(e.message!);
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+}
