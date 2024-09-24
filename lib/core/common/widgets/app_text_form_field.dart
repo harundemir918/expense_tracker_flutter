@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class AppTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
+  final bool obscureText;
 
   const AppTextFormField({
     super.key,
     required this.controller,
     required this.hintText,
+    this.obscureText = false,
   });
 
   @override
@@ -18,17 +20,10 @@ class AppTextFormField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         style: TextStyle(color: AppColors.whiteColor),
+        obscureText: obscureText,
         decoration: InputDecoration(
           fillColor: AppColors.lightPurpleColor2,
           filled: true,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: AppColors.lightPurpleColor1),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: AppColors.redColor),
-          ),
           hintText: hintText,
           hintStyle: TextStyle(color: AppColors.hintColor),
         ),

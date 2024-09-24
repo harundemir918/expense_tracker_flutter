@@ -36,6 +36,7 @@ class _LoginPageState extends State<LoginPage> {
               AppTextFormField(
                 controller: passwordController,
                 hintText: 'Password',
+                obscureText: true,
               ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
               const DoNotHaveAccountText(),

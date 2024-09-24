@@ -1,4 +1,4 @@
-import 'package:expense_tracker/core/theme/app_colors.dart';
+import 'package:expense_tracker/core/theme/app_theme.dart';
 import 'package:expense_tracker/features/auth/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -14,12 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expense Tracker',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.darkPurpleColor2,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        fontFamily: 'Poppins',
-      ),
+      theme: appTheme,
       home: const LoginPage(),
     );
   }

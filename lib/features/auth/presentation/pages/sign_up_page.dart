@@ -40,6 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
               AppTextFormField(
                 controller: passwordController,
                 hintText: 'Password',
+                obscureText: true,
               ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
               const HaveAccountText(),
