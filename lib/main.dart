@@ -2,6 +2,7 @@ import 'package:expense_tracker/core/common/cubits/app_user/app_user_cubit.dart'
 import 'package:expense_tracker/core/theme/app_theme.dart';
 import 'package:expense_tracker/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:expense_tracker/features/auth/presentation/pages/login_page.dart';
+import 'package:expense_tracker/features/home/presentation/bloc/home_bloc.dart';
 import 'package:expense_tracker/features/home/presentation/pages/home_page.dart';
 import 'package:expense_tracker/init_dependencies.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,9 @@ void main() async {
         ),
         BlocProvider(
           create: (_) => serviceLocator<AuthBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => serviceLocator<HomeBloc>(),
         ),
       ],
       child: const MyApp(),
