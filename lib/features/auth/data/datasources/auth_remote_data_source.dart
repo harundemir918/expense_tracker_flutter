@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expense_tracker/features/auth/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       await user.updateDisplayName(name);
       await user.reload();
       user = FirebaseAuth.instance.currentUser;
-      debugPrint(user.toString());
+      String uid = user!.uid;
+      final userDoc = FirebaseFirestore.instance.collection('users').doc(uid);
+      if (!(await userDoc.get()).exists) {
+        await userDoc.set({
+          'name': name,
+          'email': email,
+          'created_at': FieldValue.serverTimestamp(),
+        });
+      }
       return UserModel(
         id: userCredential.user!.uid,
         email: userCredential.user!.email!,
