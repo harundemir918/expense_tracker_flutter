@@ -11,7 +11,12 @@ class HomeAddTransactionBottomSheet extends StatelessWidget {
     return Container(
       width: MediaQuery.sizeOf(context).width,
       height: MediaQuery.sizeOf(context).height * 0.6,
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.only(
+        top: 16.0,
+        left: 16.0,
+        right: 16.0,
+        bottom: MediaQuery.viewInsetsOf(context).bottom,
+      ),
       child: const HomeAddTransactionBottomSheetForm(),
     );
   }
