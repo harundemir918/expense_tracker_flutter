@@ -5,22 +5,26 @@ class AppTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
+  final TextInputType keyboardType;
 
   const AppTextFormField({
     super.key,
     required this.controller,
     required this.hintText,
     this.obscureText = false,
+    this.keyboardType = TextInputType.text,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      width: MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: TextFormField(
         controller: controller,
         style: TextStyle(color: AppColors.whiteColor),
         obscureText: obscureText,
+        keyboardType: keyboardType,
         decoration: InputDecoration(
           fillColor: AppColors.lightPurpleColor2,
           filled: true,
