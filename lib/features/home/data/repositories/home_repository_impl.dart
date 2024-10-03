@@ -10,9 +10,9 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this.homeRemoteDataSource);
 
   @override
-  Future<Either<Failure, List<Transaction>>> fetchTransactions() async {
+  Future<Either<Failure, Stream<List<Transaction>>>> fetchTransactions() async {
     try {
-      final result = await homeRemoteDataSource.fetchTransactions();
+      final result = homeRemoteDataSource.fetchTransactions();
       return right(result);
     } catch (e) {
       return left(Failure(message: e.toString()));

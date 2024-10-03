@@ -23,11 +23,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     result.fold(
       (failure) => emit(HomeFailure(failure.message)),
-      (transactions) => emit(
-        HomeSuccess(
-          transactions: transactions,
-        ),
-      ),
+      (transactionsStream) async {
+        await emit.forEach<List<Transaction>>(
+          transactionsStream,
+          onData: (transactions) => HomeSuccess(transactions: transactions),
+          onError: (error, stackTrace) =>
+              HomeFailure('Error fetching transactions: $error'),
+        );
+      },
     );
   }
 }

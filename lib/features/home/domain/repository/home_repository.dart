@@ -3,5 +3,5 @@ import 'package:expense_tracker/core/error/failures.dart';
 import 'package:fpdart/fpdart.dart';
 
 abstract interface class HomeRepository {
-  Future<Either<Failure, List<Transaction>>> fetchTransactions();
+  Future<Either<Failure, Stream<List<Transaction>>>> fetchTransactions();
 }
