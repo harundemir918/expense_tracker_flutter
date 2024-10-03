@@ -1,8 +1,9 @@
 import 'package:expense_tracker/core/theme/app_colors.dart';
+import 'package:expense_tracker/core/utils/date_utils.dart';
 import 'package:flutter/material.dart';
 
 class HomeTransactionCardDate extends StatelessWidget {
-  final DateTime date;
+  final String date;
 
   const HomeTransactionCardDate({
     required this.date,
@@ -12,7 +13,7 @@ class HomeTransactionCardDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      date.toString(),
+      formatDateForDisplay(DateTime.parse(date)),
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppColors.whiteColor,
           ),

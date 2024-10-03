@@ -1,4 +1,5 @@
 import 'package:expense_tracker/core/common/widgets/app_loading_indicator.dart';
+import 'package:expense_tracker/core/utils/date_utils.dart';
 import 'package:expense_tracker/core/utils/show_snackbar.dart';
 import 'package:expense_tracker/features/home/presentation/bloc/home_bloc.dart';
 import 'package:expense_tracker/features/home/presentation/widgets/home_transaction_card.dart';
@@ -34,11 +35,17 @@ class _HomeTransactionListState extends State<HomeTransactionList> {
           return const AppLoadingIndicator();
         }
         if (state is HomeSuccess) {
+          final groupedTransactions =
+              groupTransactionsByDate(state.transactions);
+          final dates = groupedTransactions.keys.toList();
           return ListView.builder(
-              itemCount: state.transactions.length,
+              itemCount: dates.length,
               itemBuilder: (context, index) {
+                final date = dates[index];
+                final transactionsOnDate = groupedTransactions[date]!;
                 return HomeTransactionCard(
-                  transaction: state.transactions[index],
+                  date: date,
+                  transactions: transactionsOnDate,
                 );
               });
         }

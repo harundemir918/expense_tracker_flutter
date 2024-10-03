@@ -4,10 +4,12 @@ import 'package:expense_tracker/features/home/presentation/widgets/home_transact
 import 'package:flutter/material.dart';
 
 class HomeTransactionCard extends StatelessWidget {
-  final Transaction transaction;
+  final String date;
+  final List<Transaction> transactions;
 
   const HomeTransactionCard({
-    required this.transaction,
+    required this.date,
+    required this.transactions,
     super.key,
   });
 
@@ -18,15 +20,22 @@ class HomeTransactionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HomeTransactionCardDate(date: transaction.date),
+          HomeTransactionCardDate(date: date),
           const SizedBox(height: 8.0),
-          HomeTransactionCardContent(
-            title: transaction.title,
-            description: transaction.description,
-            amount: transaction.amount,
-            category: transaction.category,
-            type: transaction.type,
-          ),
+          ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: transactions.length,
+            itemBuilder: (context, index) {
+              return HomeTransactionCardContent(
+                title: transactions[index].title,
+                description: transactions[index].description,
+                amount: transactions[index].amount,
+                category: transactions[index].category,
+                type: transactions[index].type,
+              );
+            },
+          )
         ],
       ),
     );
