@@ -8,13 +8,11 @@ class HomeAddTransactionBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        width: MediaQuery.sizeOf(context).width,
-        height: MediaQuery.sizeOf(context).height * 0.6,
-        padding: const EdgeInsets.all(16.0),
-        child: const HomeAddTransactionBottomSheetForm(),
-      ),
+    return Container(
+      width: MediaQuery.sizeOf(context).width,
+      height: MediaQuery.sizeOf(context).height * 0.6,
+      padding: const EdgeInsets.all(16.0),
+      child: const HomeAddTransactionBottomSheetForm(),
     );
   }
 }

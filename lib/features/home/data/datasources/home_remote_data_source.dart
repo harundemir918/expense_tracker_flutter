@@ -4,6 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 abstract interface class HomeRemoteDataSource {
   Stream<List<TransactionModel>> fetchTransactions();
+
+  void addTransaction({
+    required TransactionModel transaction,
+  });
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -27,6 +31,25 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
           return TransactionModel.fromJson(doc.data());
         }).toList();
       });
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  @override
+  Future<void> addTransaction({
+    required TransactionModel transaction,
+  }) async {
+    try {
+      final User? user = FirebaseAuth.instance.currentUser;
+      String uid = user!.uid;
+      var transactionRef = firebaseFirestore
+          .collection('users')
+          .doc(uid)
+          .collection('transactions')
+          .doc();
+
+      await transactionRef.set(transaction.toJson());
     } catch (e) {
       throw Exception(e.toString());
     }

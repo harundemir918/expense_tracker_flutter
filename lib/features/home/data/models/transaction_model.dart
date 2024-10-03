@@ -26,6 +26,19 @@ class TransactionModel extends tr.Transaction {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'amount': amount.toString(),
+      'type': type,
+      'category': category,
+      'date': Timestamp.fromDate(date),
+      'title': title,
+      'description': description,
+      'created_at': Timestamp.fromDate(createdAt),
+      'updated_at': Timestamp.fromDate(updatedAt),
+    };
+  }
+
   TransactionModel copyWith({
     double? amount,
     String? type,

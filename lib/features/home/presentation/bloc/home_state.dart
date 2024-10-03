@@ -18,3 +18,11 @@ final class HomeFailure extends HomeState {
 
   HomeFailure(this.message);
 }
+
+final class HomeAddTransactionSuccess extends HomeState {}
+
+final class HomeAddTransactionFailure extends HomeState {
+  final String message;
+
+  HomeAddTransactionFailure(this.message);
+}
