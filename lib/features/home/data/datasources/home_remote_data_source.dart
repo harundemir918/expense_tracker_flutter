@@ -8,6 +8,8 @@ abstract interface class HomeRemoteDataSource {
   void addTransaction({
     required TransactionModel transaction,
   });
+
+  void deleteTransaction({required String id});
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -28,7 +30,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
           .snapshots()
           .map((snapshot) {
         return snapshot.docs.map((doc) {
-          return TransactionModel.fromJson(doc.data());
+          return TransactionModel.fromJson(doc.data())..id = doc.id;
         }).toList();
       });
     } catch (e) {
@@ -50,6 +52,22 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
           .doc();
 
       await transactionRef.set(transaction.toJson());
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  @override
+  Future<void> deleteTransaction({required String id}) async {
+    try {
+      final User? user = FirebaseAuth.instance.currentUser;
+      String uid = user!.uid;
+      await firebaseFirestore
+          .collection('users')
+          .doc(uid)
+          .collection('transactions')
+          .doc(id)
+          .delete();
     } catch (e) {
       throw Exception(e.toString());
     }

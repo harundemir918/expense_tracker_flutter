@@ -33,4 +33,16 @@ class HomeRepositoryImpl implements HomeRepository {
       return left(Failure(message: e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteTransaction({required String id}) async {
+    try {
+      final result = homeRemoteDataSource.deleteTransaction(
+        id: id,
+      );
+      return right(result);
+    } catch (e) {
+      return left(Failure(message: e.toString()));
+    }
+  }
 }

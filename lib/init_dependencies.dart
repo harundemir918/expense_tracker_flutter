@@ -11,6 +11,7 @@ import 'package:expense_tracker/features/home/data/datasources/home_remote_data_
 import 'package:expense_tracker/features/home/data/repositories/home_repository_impl.dart';
 import 'package:expense_tracker/features/home/domain/repository/home_repository.dart';
 import 'package:expense_tracker/features/home/domain/usecases/home_add_transaction.dart';
+import 'package:expense_tracker/features/home/domain/usecases/home_delete_transaction.dart';
 import 'package:expense_tracker/features/home/domain/usecases/home_fetch_transactions.dart';
 import 'package:expense_tracker/features/home/presentation/bloc/home_bloc.dart';
 import 'package:expense_tracker/firebase_options.dart';
@@ -96,10 +97,16 @@ void _initHome() {
         serviceLocator(),
       ),
     )
+    ..registerFactory(
+      () => HomeDeleteTransaction(
+        serviceLocator(),
+      ),
+    )
     ..registerLazySingleton(
       () => HomeBloc(
         homeFetchTransactions: serviceLocator(),
         homeAddTransaction: serviceLocator(),
+        homeDeleteTransaction: serviceLocator(),
       ),
     );
 }

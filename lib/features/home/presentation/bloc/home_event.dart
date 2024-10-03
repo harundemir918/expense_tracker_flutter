@@ -10,3 +10,9 @@ class HomeAddTransactionEvent extends HomeEvent {
 
   HomeAddTransactionEvent({required this.transaction});
 }
+
+class HomeDeleteTransactionEvent extends HomeEvent {
+  final String id;
+
+  HomeDeleteTransactionEvent({required this.id});
+}

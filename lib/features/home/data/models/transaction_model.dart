@@ -3,6 +3,7 @@ import 'package:expense_tracker/core/entities/transaction.dart' as tr;
 
 class TransactionModel extends tr.Transaction {
   TransactionModel({
+    super.id,
     required super.amount,
     required super.type,
     required super.category,
@@ -15,6 +16,7 @@ class TransactionModel extends tr.Transaction {
 
   factory TransactionModel.fromJson(Map<String, dynamic> map) {
     return TransactionModel(
+      id: map['id'],
       amount: double.parse(map['amount'] ?? 0.0),
       type: map['type'] ?? '',
       category: map['category'] ?? '',
@@ -40,6 +42,7 @@ class TransactionModel extends tr.Transaction {
   }
 
   TransactionModel copyWith({
+    String? id,
     double? amount,
     String? type,
     String? category,
@@ -50,6 +53,7 @@ class TransactionModel extends tr.Transaction {
     DateTime? updatedAt,
   }) {
     return TransactionModel(
+      id: id ?? this.id,
       amount: amount ?? this.amount,
       type: type ?? this.type,
       category: category ?? this.category,

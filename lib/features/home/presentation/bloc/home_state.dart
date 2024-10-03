@@ -26,3 +26,11 @@ final class HomeAddTransactionFailure extends HomeState {
 
   HomeAddTransactionFailure(this.message);
 }
+
+final class HomeDeleteTransactionSuccess extends HomeState {}
+
+final class HomeDeleteTransactionFailure extends HomeState {
+  final String message;
+
+  HomeDeleteTransactionFailure(this.message);
+}

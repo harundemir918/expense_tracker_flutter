@@ -9,4 +9,6 @@ abstract interface class HomeRepository {
   Future<Either<Failure, void>> addTransaction({
     required TransactionModel transaction,
   });
+
+  Future<Either<Failure, void>> deleteTransaction({required String id});
 }
