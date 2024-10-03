@@ -33,8 +33,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       HomeFetchTransactionsEvent event, Emitter<HomeState> emit) async {
     final result = await _homeFetchTransactions(NoParams());
 
-    result.fold(
-      (failure) => emit(HomeFailure(failure.message)),
+    await result.fold(
+      (failure) async => emit(HomeFailure(failure.message)), // Add async here
       (transactionsStream) async {
         await emit.forEach<List<Transaction>>(
           transactionsStream,
