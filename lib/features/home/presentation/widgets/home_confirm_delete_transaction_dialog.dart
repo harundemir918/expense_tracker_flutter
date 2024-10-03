@@ -30,7 +30,7 @@ class HomeConfirmDeleteTransactionDialog extends StatelessWidget {
           child: Text(
             'Cancel',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: AppColors.whiteColor,
+                  color: AppColors.lightPurpleColor3,
                 ),
           ),
           onPressed: () {
@@ -41,7 +41,7 @@ class HomeConfirmDeleteTransactionDialog extends StatelessWidget {
           child: Text(
             'Delete',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: AppColors.whiteColor,
+                  color: AppColors.lightPurpleColor3,
                 ),
           ),
           onPressed: () {
